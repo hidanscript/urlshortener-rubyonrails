@@ -11,11 +11,13 @@ class UrlsController < ApplicationController
   # GET /urls/1
   @override
   def show
-    url = Url.where(key: params['id'])
+    url = Url.find_by(key: params['id'])
     url = url == [] ? nil : url #If there is no record with the provided key, returns nil
     
-    if(url)
-      destiny_url = url[0]['destiny']
+    if url
+      url.visit_counter = url.visit_counter + 1
+      url.save
+      destiny_url = url.destiny
       redirect_to destiny_url
     else
       render json: { error: true, message: 'Invalid url key' }, status: :unprocessable_entity
