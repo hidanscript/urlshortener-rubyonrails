@@ -27,12 +27,13 @@ class UrlsController < ApplicationController
     destiny_url = url_params['destiny']
     key = SecureRandom.hex(5)
 
-    @url = Url.new({ key: key, destiny: destiny_url})
+    url = Url.new({ key: key, destiny: destiny_url})
+    final_path = request.protocol + request.host_with_port + '/' + url['key']
 
-    if @url.save
-      render json: @url, status: :created, location: @url
+    if url.save
+      render json: { url: url, url: final_path}, status: :created, location: url
     else
-      render json: @url.errors, status: :unprocessable_entity
+      render json: url.errors, status: :unprocessable_entity
     end
   end
 
