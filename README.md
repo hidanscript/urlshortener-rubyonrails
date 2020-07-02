@@ -1,24 +1,14 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Simple REST Api for Url shortener example, made with Ruby on Rails by David Marcano.
 
-Things you may want to cover:
+## Setup
 
-* Ruby version
+- Make sure that Ruby and Ruby on Rails are installed.
+- Run `gem install` in terminal.
+- Run `rake db:create` and `rake db:migrate`
+- Run `rails server`, now the local server is running in localhost:3000!
 
-* System dependencies
+## Guides
 
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+- POST ROUTES: `http://localhost:3000` and  `http://localhost:3000/urls`
