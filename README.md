@@ -12,3 +12,9 @@ Simple REST Api for Url shortener example, made with Ruby on Rails by David Marc
 ## Guides
 
 - POST ROUTES: `http://localhost:3000` and  `http://localhost:3000/urls`
+- JSON Body must contain
+    ```
+        {
+            "destiny": "your destiny url"
+        }
+    ```
