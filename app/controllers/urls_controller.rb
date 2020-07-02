@@ -1,5 +1,5 @@
 class UrlsController < ApplicationController
-  before_action :set_url, only: [:show, :update, :destroy]
+  before_action :set_url, only: [:update, :destroy]
 
   # GET /urls
   def index
@@ -9,8 +9,17 @@ class UrlsController < ApplicationController
   end
 
   # GET /urls/1
+  @override
   def show
-    render json: @url
+    url = Url.where(key: params['id'])
+    url = url == [] ? nil : url #If there is no record with the provided key, returns nil
+    
+    if(url)
+      destiny_url = url[0]['destiny']
+      redirect_to destiny_url
+    else
+      render json: { error: true, message: 'Invalid url key' }, status: :unprocessable_entity
+    end
   end
 
   # POST /urls
